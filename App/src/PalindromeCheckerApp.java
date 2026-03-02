@@ -3,24 +3,32 @@ public class PalindromeCheckerApp
 {
     public static void main (String[]args)
     {
-        Scanner sc = new Scanner (System.in);
-        System.out.println("Enter the string to check if palindrome or not");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter a string: ");
         String input = sc.nextLine();
-        String reversed = "";
 
-        for (int i=input.length()-1; i>=0 ; i--)
-        {
-            reversed += input.charAt(i);
+        char[] arr = input.toCharArray();
+
+        int left = 0;
+        int right = arr.length - 1;
+
+        boolean isPalindrome = true;
+
+        while (left < right) {
+            if (arr[left] != arr[right]) {
+                isPalindrome = false;
+                break;
+            }
+            left++;
+            right--;
         }
 
-        if (input.equals(reversed))
-        {
-            System.out.println(input+" is a palindrome");
+        if (isPalindrome) {
+            System.out.println("The string is a palindrome.");
+        } else {
+            System.out.println("The string is not a palindrome.");
         }
-        else
-        {
-            System.out.println(input+" is not a palindrome");
-        }
+
         sc.close();
     }
 }
